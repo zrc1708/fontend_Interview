@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function A() {
+            this.n = 0;
+        }
+        A.prototype.callMe = function () {
+            // console.log(this)    //打印这个便知原理
+            console.log(this.n);
+        }
+        let a = new A();
+        console.log(a)
+        document.addEventListener("click", a.callMe); 
+        document.addEventListener("click", () => {
+            a.callMe();
+        }); 
+        document.addEventListener("click", function () {
+            a.callMe();
+        }); 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="http://imgapi.jibei66.com/getimage/调用防抖.png" alt="">
+    <script>
+        //简单版
+        function debounce(fn) {
+            let isExecuted = false;
+            return function () {
+                if (!isExecuted) {
+                    isExecuted = true;
+                    new Promise((resolve, reject) => {
+                        fn();
+                        resolve();
+                    }).then(() => {
+                        isExecuted = false;
+                    })
+                }
+            }
+        }
+
+        function test(){
+            console.log(111)
+        }
+
+        let G = debounce(test)
+
+        // function a(){
+        //     G()
+        //     G()
+        //     G()
+        // }
+        // a()
+
+        setTimeout(() => {
+            G()
+        }, 0);
+        G()
+
+        //考虑fn带参数及fn可能有返回值情况
+        function debounce(fn) {
+            let isExecuted = false;
+            return function (...args) {
+                if (!isExecuted) {
+                    isExecuted = true;
+                    let res;
+                    new Promise((resolve, reject) => {
+                        res = fn.apply(null, args);
+                        resolve();
+                    }).then(() => {
+                        isExecuted = false;
+                    })
+                    return res;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
