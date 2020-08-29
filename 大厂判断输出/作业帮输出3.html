@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var friendName = 'World';
+        (function () {
+            if (typeof friendName === 'undefined') {
+                var friendName = 'Jack';
+                alert('Goodbye ' + friendName);
+            } else {
+                alert('Hello ' + friendName);
+            }
+        })();
+    </script>
+</body>
+
+</html>'

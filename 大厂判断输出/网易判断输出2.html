@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.a = () => {
+            return 1
+        }
+        Object.prototype.b = () => {
+            return 2
+        }
+
+        function A() {}
+        var a = new A();
+        console.log(a.a());
+        console.log(a.b());
+        console.log(A.a());
+        console.log(A.b());
+        // 实测第一行会报错，其他的都是正常212
+    </script>
+</body>
+
+</html>
