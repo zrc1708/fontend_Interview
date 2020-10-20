@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function dog(name){
+            this.name = name
+        }
+        dog.prototype.say = function(){
+            console.log('汪汪')
+        }
+
+        // let wangcai = new dog('wangcai')
+        // wangcai.say()
+
+        function myNew(func,...arr){
+            let obj = new Object()
+            obj.__proto__= func.prototype
+            var res = func.apply(obj,arr)
+            // 如果构造函数返回一个对象，则将该对象返回，否则返回步骤1创建的对象
+            return res instanceof Object ? res : obj
+        }
+        let wangcai = myNew(dog,'wangcai')
+        console.log(wangcai)
+        wangcai.say()
+    </script>
+</body>
+</html>
