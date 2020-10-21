@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        function f(a,b,c) {
+            return a+b+c
+        }
+        const f2 = curry(f)
+        实现函数curry使：
+        f2(1)(2)(3)=f2(1)(2,3)=f2(1,2,3)=6
+        */
+        function f(a, b, c) {
+            return a + b + c
+        }
+
+        function curry(fn) {
+            let arr = []
+            n = fn.length; //传入的函数的参数个数
+            return function core() {
+                var arg = [].slice.call(arguments); //将任意的类数组对象转化为数组，返回的函数传入的参数
+                arr = arr.concat(arg); //收集传入的参数
+                n -= arg.length; //n的值在不断递归传入参数的过程中逐渐减小，用于判断是否继续递归core
+                return n === 0 ? fn(...arr) : core;
+            }
+        }
+        const f2 = curry(f)
+        // console.log(f2(1)(2)(3))
+        console.log(f2(1,2)(3))
+        // console.log(f2(1,2,3))
+    </script>
+</body>
+
+</html>
