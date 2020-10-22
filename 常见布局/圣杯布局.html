@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        padding-left: 190px;
+        padding-right: 190px;
+    }
+
+    .main {
+        float: left;
+        width: 100%;
+        background-color: red;
+        height: 100px;
+    }
+
+    .left {
+        float: left;
+        width: 190px;
+        margin-left: -100%;
+        position: relative;
+        left: -190px;
+        background-color: blue;
+    }
+
+    .right {
+        float: left;
+        width: 190px;
+        margin-left: -190px;
+        position: relative;
+        right: -190px;
+        background-color: green;
+    }
+</style>
+
+<body>
+    <p>要求：三列布局；中间主体内容前置，且宽度自适应；两边内容定宽<br>
+        好处：重要的内容放在文档流前面可以优先渲染<br>
+        原理：利用相对定位、浮动、负边距布局，而不添加额外标签</p>
+    <div class="container">
+        <div class="main">1111</div>
+        <div class="left">2</div>
+        <div class="right">2</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var num = 1;
+        var obj = {
+            num: 2,
+            add: function () {
+                this.num = 3;
+                (function () {
+                    console.log(this.num);
+                    this.num = 4
+                })();
+                console.log(this.num);
+            }
+        }
+
+        obj.add()
+    </script>
+</body>
+
+</html>
