@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+         缺点：
+        1：会调用两次被继承者构造函数
+        2：会把被继承者的属性加到继承者原型上去
+        */
+        function Parent(age) {
+            this.age = age
+        }
+        Parent.prototype.say = function () {
+            console.log(this.age)
+        }
+
+        function Child(age) {
+            Parent.call(this, age)
+        }
+        Child.prototype = new Parent()
+        const child = new Child(20)
+        child.say() //20
+        console.log(child instanceof Parent) //true
+    </script>
+</body>
+
+</html>

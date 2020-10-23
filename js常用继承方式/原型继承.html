@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        优点：可以继承构造函数属性，也可继承原型属性。
+        缺点：
+        1.首先属性值为引用类型值的原型属性被修改后可能会影响到所有的实例，
+        而该种继承方式中，构造函数中的属性会继承到子类型，成为子类的原型对象的属性。
+        （这也是为什么要在构造函数中定义属性，在原型中定义公共方法）
+        2.在创建子类的实例时，不能向父类的构造函数中传递参数。
+        1：new 生成的实例都是一样的，并且共享所有构造方法的属性及方法
+        2：无法传递参数
+        */
+        function Parent() {
+            this.age = 12;
+            this.hobby = ['吃饭', '睡觉', '打豆豆']
+        }
+        Parent.prototype.addHobby = function () {
+            this.hobby.push('喝水')
+        }
+
+        function Child() {}
+        Child.prototype = new Parent()
+        const child1 = new Child(); //{}
+        const child2 = new Child(); //{}
+        child2.addHobby()
+        console.log(child1.hobby) //['吃饭','睡觉', '打豆豆','喝水']
+        console.log(child2.hobby) //['吃饭','睡觉', '打豆豆','喝水']
+    </script>
+</body>
+
+</html>

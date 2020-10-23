@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+         缺点：
+        1：方法都需要按照属性的写法，写到构造函数内，没有任何复用性可言
+        2：每次创建对象都会调取属性方法，浪费性能
+        */
+        function Parent(age) {
+            this.age = age;
+        }
+
+        function Child(age) {
+            Parent.call(this, age)
+        }
+        const child = new Child(12)
+        console.log(child) //{age: 12}
+    </script>
+</body>
+
+</html>
