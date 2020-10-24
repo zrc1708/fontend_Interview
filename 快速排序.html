@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 挖坑法
+        function quickSort(arr,begin=0,end=arr.length-1) {
+            if(begin>=end){
+                return
+            }
+            let base = arr[begin]
+            let flag = 1
+            let left = begin    //左指针
+            let right = end     //右指针
+            while (true) {
+                if(left===right){
+                    arr[left] = base
+                    break
+                }else if (flag%2===1) {
+                    if(arr[right] < base){
+                        arr[left] = arr[right]
+                        left++
+                        flag++
+                    }else{
+                        right--
+                    }
+                }else {
+                    if(arr[left] > base){
+                        arr[right] = arr[left]
+                        right--
+                        flag++
+                    }else{
+                        left++
+                    }
+                }
+            }
+            quickSort(arr,begin,left-1)
+            quickSort(arr,left+1,end)
+        }
+
+        let arr1 = [4,7,6,5,3,2,8,1]
+        let arr2 = [3,3,3,44,38,5,47,15,36,26,27,2,46,4,19,50,48]
+
+        quickSort(arr1)
+        console.log(arr1)
+        quickSort(arr2)
+        console.log(arr2)
+    </script>
+</body>
+
+</html>
