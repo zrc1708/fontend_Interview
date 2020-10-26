@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log('start');
+
+        setTimeout(() => {
+            console.log('timeout1');
+        }, 0);
+
+        Promise.resolve().then(() => {
+            console.log('promise1');
+        });
+    </script>
+    <script>
+        setTimeout(() => {
+            console.log('timeout2');
+        }, 0);
+
+        // requestAnimationFrame(() => {
+        //     console.log('requestAnimationFrame');
+        // });
+
+        Promise.resolve().then(() => {
+            console.log('promise2');
+        });
+
+        console.log('end');
+        /*
+            start
+            promise1
+            end
+            promise2
+            timtout1
+            timeout2
+        */
+    </script>
+</body>
+
+</html>
