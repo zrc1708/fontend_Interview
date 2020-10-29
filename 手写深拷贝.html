@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function deepCopy(oldobj,newobj){
+            let obj = {}
+            for (let key in oldobj) {
+                if(oldobj[key] instanceof Array){
+                    newobj[key] = []
+                    deepCopy(oldobj[key],newobj[key])
+                }else if(oldobj[key] instanceof Object) {
+                    newobj[key] = {}
+                    deepCopy(oldobj[key],newobj[key])
+                }else{
+                    newobj[key] = oldobj[key]
+                }
+                
+            }
+        }
+        let zhangsan = {
+            name:'zhangsan',
+            date:undefined,
+            number:NaN,
+            // 正则不能用此方法深拷贝
+            reg: new RegExp('\\w+'),
+            // 时间不行
+            date:new Date(),
+            // 方法不行
+            say:function(){
+                console.log('123')
+            },
+            school:{
+                schoolname:'清华大学',
+                grade:'four'
+            },
+            like:['football','basketball','baseball'],
+        }
+        // 循环引用不行
+        // zhangsan.child = zhangsan
+
+        let test = {}
+
+        deepCopy(zhangsan,test)
+
+        let test2 = JSON.parse(JSON.stringify(zhangsan))
+
+        // console.log(zhangsan)
+        // console.log(test)
+        zhangsan.name = 'lisi'
+        zhangsan.school.schoolname = '123123'
+        zhangsan.like[0] = 'ygo'
+        console.log(zhangsan)
+        console.log(test)
+        // test.say()
+        console.log(test2)
+    </script>
+</body>
+</html>
