@@ -10,21 +10,29 @@
 <body>
     <script>
         function Parent(age) {
-            this.age = age;
+            this.age = age
+            this.hobby = ['吃饭', '睡觉', '打豆豆']
         }
-        Parent.prototype.say = function () {
-            console.log('say hello')
+        Parent.prototype.addHobby = function () {
+            this.hobby.push('喝水')
         }
 
         function Child(age) {
             Parent.call(this, age)
         }
 
+        // 创建一个没有实例方法的类
         function F() {}
         F.prototype = Parent.prototype;
         Child.prototype = new F();
-        const child = new Child(12);
-        child.say()
+
+        const child1 = new Child(20)
+        const child2 = new Child(10)
+        child2.addHobby()
+        console.log(child1.hobby) //['吃饭','睡觉', '打豆豆']
+        console.log(child2.hobby) //['吃饭','睡觉', '打豆豆','喝水']
+        console.log(child1 instanceof Parent) //true
+        console.log(child1 instanceof Child) //true
     </script>
 </body>
 

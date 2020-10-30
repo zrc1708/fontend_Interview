@@ -15,14 +15,29 @@
         2：每次创建对象都会调取属性方法，浪费性能
         */
         function Parent(age) {
-            this.age = age;
+            this.age = age
+            this.hobby = ['吃饭', '睡觉', '打豆豆']
+            this.addHobby = function () {
+                this.hobby.push('喝水')
+            }
+        }
+        Parent.prototype.say = function(){
+            console.log(this.age)
         }
 
         function Child(age) {
             Parent.call(this, age)
         }
-        const child = new Child(12)
-        console.log(child) //{age: 12}
+        const child1 = new Child(12)
+        const child2 = new Child(16)
+        console.log(child1) //{age: 12 ,hobby: (4) ["吃饭", "睡觉", "打豆豆"] ,sayAge: ƒ ()}
+        console.log(child2) //{age: 16 ,hobby: (4) ["吃饭", "睡觉", "打豆豆"] sayAge: ƒ ()}
+        child1.addHobby() 
+        console.log(child1) //{age: 12 ,hobby: (4) ["吃饭", "睡觉", "打豆豆", "喝水"] ,sayAge: ƒ ()}
+        console.log(child2) //{age: 16 ,hobby: (4) ["吃饭", "睡觉", "打豆豆"] sayAge: ƒ ()}
+        // child1.say() //报错
+        console.log(child1 instanceof Parent) // false
+        console.log(child1 instanceof Child) // true
     </script>
 </body>
 

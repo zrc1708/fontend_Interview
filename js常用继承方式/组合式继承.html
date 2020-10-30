@@ -16,18 +16,22 @@
         */
         function Parent(age) {
             this.age = age
+            this.hobby = ['吃饭', '睡觉', '打豆豆']
         }
-        Parent.prototype.say = function () {
-            console.log(this.age)
+        Parent.prototype.addHobby = function () {
+            this.hobby.push('喝水')
         }
 
         function Child(age) {
             Parent.call(this, age)
         }
         Child.prototype = new Parent()
-        const child = new Child(20)
-        child.say() //20
-        console.log(child instanceof Parent) //true
+        const child1 = new Child(20)
+        const child2 = new Child(10)
+        child2.addHobby()
+        console.log(child1.hobby) //['吃饭','睡觉', '打豆豆']
+        console.log(child2.hobby) //['吃饭','睡觉', '打豆豆','喝水']
+        console.log(child1 instanceof Parent) //true
     </script>
 </body>
 
