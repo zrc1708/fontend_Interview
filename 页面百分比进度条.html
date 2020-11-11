@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <img src="https://s1.ax1x.com/2020/10/12/0WPkND.jpg" alt="">
+    </div>
+</body>
+<script>
+    console.log("JavaScript")
+
+    document.addEventListener("readystatechange",function(){
+        if(document.readyState === "interactive"){
+            NProgress.start()
+        }
+        console.log(document.readyState)
+    })
+
+    document.addEventListener("DOMContentLoaded",function(){
+        console.log("DOMContentLoaded")
+    })
+
+    window.addEventListener("load",function(){
+        NProgress.done()
+        console.log("load")
+    })
+</script>
+</html>

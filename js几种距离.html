@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        position: relative;
+        margin-top: 150px;
+        padding-top: 100px;
+    }
+    .test{
+        width: 100px;
+        height: 100px;
+        padding: 100px;
+        border: 50px solid #969696;
+        overflow: auto;
+        background-color: pink;
+    }
+    .content{
+        width: 50px;
+        height: 1000px;
+        background-color: yellow;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="test">
+            <div class="content"></div>
+        </div>
+    </div>
+
+    <script>
+        /*
+一、宽高
+    （1）clientHeight、clientWidth→元素宽高（height+padding，不包含边框），可以理解为元素可视区域高度
+    （2）offsetHeight、offectWidth→元素宽高（height+padding+border，包含边框），可以理解为元素的可视高度
+    （3）scrollHeight、scrollWidth→元素宽高（内容的实际高度+上下padding<如果没有限制div的height，即height是自适应的，那么scrollHeight=clientHeight>）
+    （4）scrollHeight与offsetHeight的区别？
+             offsetHeight即是自身的高度，scrollHeight是自身的高度+隐藏元素的高度（即是内层元素的offsetHeight）
+二、滚动距离
+    （1） offsetTop：为容器相对于父定位元素的偏移---→等于top+margin-top
+          同理offsetLeft：容器相对于父定位元素的偏移---→等于left+margin-left
+    （2）clientTop: 容器内部相对于容器本身的top偏移，实际就是border-width
+    （3）scrollTop: Y轴的滚动条没有，或滚到最上时是0；Y轴的滚动条滚到最下时是 scrollHeight-clientHeight。
+        滚动时通常只能scrollTop，当scrollTop为 0 到 scrollHeight-clientHeight  是正常的滚动距离，否则就是滚动过头了（手机上的阻尼效果）。
+        */
+
+        let test = document.querySelector('.test')
+        console.log(test.clientHeight);
+        console.log(test.offsetHeight);
+        console.log(test.scrollHeight);
+
+        console.log(test.offsetTop);
+        console.log(test.clientTop);
+        console.log(test.scrollTop);
+    </script>
+</body>
+</html>
