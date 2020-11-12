@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.test{
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+</style>
+
+<body>
+    <div class="test" draggable="true"></div>
+    <script>
+        /*
+        拖动开始	ondragstart	    在拖动操作开始时执行脚本
+        拖动过程中	ondrag	        只要脚本在被拖动就运行脚本
+        拖动过程中	ondragenter	    当元素被拖动到一个合法的防止目标时，执行脚本
+        拖动过程中	ondragover	    只要元素正在合法的防止目标上拖动时，就执行脚本
+        拖动过程中	ondragleave	    当元素离开合法的防止目标时
+        拖动结束	ondrop	        将被拖动元素放在目标元素内时运行脚本
+        拖动结束	ondragend	    在拖动操作结束时运行脚本
+        */
+        let test = document.querySelector('.test')
+        var offsetX= 0
+        var offsetY= 0
+        test.ondragstart = function(e){
+            // 记录拖拽开始时的鼠标位置
+            // console.log(e.offsetX);
+            // console.log(e.offsetY);
+            offsetX = e.offsetX
+            offsetY = e.offsetY
+        }
+        test.ondrag = function(e){
+            var x= e.pageX;  
+            var y= e.pageY;  
+            console.log(x+'-'+y);  
+            //drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0  
+            if(x==0 && y==0){  
+                return; //不处理拖动最后一刻X和Y都为0的情形  
+            }  
+            x-=offsetX;  
+            y-=offsetY;  
+    
+            test.style.left=x+'px';  
+            test.style.top=y+'px';
+        }
+    </script>
+</body>
+
+</html>

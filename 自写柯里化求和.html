@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+</style>
+<body>
+    <script>
+        function add(...args){
+            let arr = []
+            function addnum(...args){
+                arr = [...arr,...args]
+                return addnum
+            }
+            addnum.res = function(){
+                return arr.reduce((a,b)=>a+b,0)
+            }
+            return addnum(...args)
+        }
+        console.log(add(1,2)(3)(4)(5,6).res());
+    </script>
+</body>
+</html>
