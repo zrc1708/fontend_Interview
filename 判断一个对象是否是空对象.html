@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {}
+
+        // 1. 将json对象转化为json字符串，再判断该字符串是否为"{}"
+        var b = JSON.stringify(obj)
+        console.log(b=='{}');
+
+        // 2. for in 循环判断
+        var c = function() {
+            for(var key in obj) {
+                return false;
+            }
+            return true;
+        }
+        console.log(c());
+
+        // 3. Object.getOwnPropertyNames()方法，获取到对象中的属性名
+        var arr = Object.getOwnPropertyNames(obj);
+        console.log(arr.length==0);
+
+        // 4. 使用ES6的Object.keys()方法，返回值也是对象中属性名组成的数组
+        var arr = Object.keys(obj);
+        console.log(arr.length==0);
+
+    </script>
+</body>
+</html>

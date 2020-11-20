@@ -6,12 +6,14 @@
     <my-component1 :title="message" @child-event='childEvent'>
       <my-component2 :title="message"></my-component2>
     </my-component1>
+    <my-component3></my-component3>
   </div>
 </template>
 
 <script>
 import component1 from './components/component1'
 import component2 from './components/component2'
+import component3 from './components/component3'
 
 export default {
   data(){
@@ -21,7 +23,8 @@ export default {
   },
   components:{
     'my-component1':component1,
-    'my-component2':component2
+    'my-component2':component2,
+    'my-component3':component3,
   },
   provide(){
     return{
@@ -34,6 +37,7 @@ export default {
     },
     childEvent(val){
       console.log(val)
+      this.message = val
     }
   }
 }
@@ -41,7 +45,7 @@ export default {
 
 <style lang="less">
 #app{
-  width: 400px;
+  width: 800px;
   height: 400px;
   background-color: lightblue;
   position: relative;

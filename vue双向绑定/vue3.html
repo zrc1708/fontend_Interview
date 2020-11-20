@@ -11,7 +11,7 @@
         <span id="text"></span>
     </div>
     <script>
-        var obj = {};
+        var obj = {name:123};
         
         var proxy = new Proxy(obj, {
             // target就是目标对象，property是被获取的属性名, receiver就是返回的obj(返回的proxy对象)
@@ -19,21 +19,23 @@
                 // console.log(target);
                 // 返回该属性值
                 console.log('获取了getter属性');
+                document.getElementById('text').innerHTML = target[property];
                 return target[property];
             },
             set: function (target, key, newVal, receive) {
                 // 执行赋值操作
+                console.log('修改了getter属性');
                 target[key] = newVal;
                 document.getElementById('text').innerHTML = target[key];
             }
         })
 
         let input = document.querySelector('#input')
+        input.value = proxy.name
+
         input.addEventListener('input',function(e){
-            // console.log(e.target.value);
-            proxy[0] = e.target.value;
+            proxy.name = e.target.value;
         })
-        console.log(proxy.a);
 
     </script>
 </body>
