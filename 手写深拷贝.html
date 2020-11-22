@@ -8,7 +8,6 @@
 <body>
     <script>
         function deepCopy(oldobj,newobj){
-            let obj = {}
             for (let key in oldobj) {
                 if(oldobj[key] instanceof Array){
                     newobj[key] = []

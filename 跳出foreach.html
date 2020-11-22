@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // foreach 不能使用break,只能通过抛出异常的方式处理
+        try {
+            let arr = [1,2,3,4,5,6,7,8,9,10]
+            arr.forEach(item => {
+                if(item == 5){
+                    throw new Error('出现了5')
+                }
+                console.log(item);
+            })
+        } catch (error) {
+            console.log(error);
+        }
+        console.log('ok');
+    </script>
+</body>
+</html>
