@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.mycall = function(context){
+            // 判断有没有传入要绑定的对象，没有默认是window，如果是基本类型的话通过Object()方法进行转换
+            var context = Object(context) || window;
+
+            // 在指向的对象obj上新建一个fn属性，值为this，也就是fn()
+            context.fn = this
+
+            // 保存返回值
+            let result = '';
+
+            // 取出传递的参数 第一个参数是this
+            const args = [...arguments].slice(1);
+
+            // 执行这个方法，并传入参数 ...是es6的语法用来展开数组
+            result = context.fn(...args);
+
+            //删除该属性
+            delete context.fn;
+
+            //返回
+            return result;
+        }
+
+        
+        let obj = {name:'zhangsan'}
+
+        function func(test){
+            console.log(test);
+            console.log(this.name);
+            return {
+                test
+            }
+        }
+
+        let res = func.mycall(obj,'test')
+        console.log(res);
+
+    </script>
+</body>
+</html>
