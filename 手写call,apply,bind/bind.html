@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.myBind = function(context) {
+            if (typeof this !== "function") {
+                throw new Error("不是一个函数");
+            }
+
+            const self = this;
+            
+            // 第一个参数是this，截取掉
+            const args1 = [...arguments].slice(1);
+
+            const bindFn = function() {
+                // 获取调用时传入的参数
+                const args2 = [...arguments];
+                return self.apply(this instanceof bindFn ? this : context, args1.concat(args2));
+            }
+
+            // 绑定原型
+            function proFn() {}  //创建新方法
+            proFn.prototype = self.prototype; //继承原型
+            bindFn.prototype = new proFn(); //绑定原型
+
+            return bindFn;
+        }
+
+        Function.prototype.myBind2 = function (thisArg, ...args) {
+            var self = this
+            // new优先级
+            var fbound = function () {
+                self.apply(this instanceof self ? this : thisArg, args.concat(Array.prototype.slice.call(arguments)))
+            }
+            // 继承原型上的属性和方法
+            fbound.prototype = Object.create(self.prototype);
+
+            return fbound;
+        }
+
+        const obj = {
+            value: 'nico'
+        }
+
+        function fn(name, age) {
+            this.test = '我是测试数据';
+            this.name = name;
+            this.age = age;
+            console.log(this.value);
+            console.log(name);
+            console.log(age);
+        }
+
+        var bindFn = fn.myBind(obj, 'LJ');
+
+        var newBind = new bindFn(25);
+        console.log(newBind);
+
+        // var bindFn = fn.myBind(obj, 'LJ')(25);
+
+        var bindFn2 = fn.myBind2(obj, 'LJ')(25);
+        // var bindFn2 = fn.myBind2(obj, 'LJ', 25);
+
+        // var bindFn3 = fn.bind(obj,'test')(25);
+        // let res3 = bindFn3('nico')
+    </script>
+</body>
+</html>

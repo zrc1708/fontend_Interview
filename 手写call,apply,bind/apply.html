@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.myapply = function(context,args){
+            var context = Object(context) || window;
+  
+            context.fn = this;
+            
+            let result = '';
+            
+            //判断有没有传入args
+            if(!args) {
+                result = context.fn();
+            }else {
+                result = context.fn(...args);
+            }
+            
+            delete context.fn;
+            
+            return result;
+        }
+
+        
+        let obj = {name:'zhangsan'}
+
+        function func(test){
+            console.log(test);
+            console.log(this.name);
+            return {
+                test
+            }
+        }
+
+        let res = func.myapply(obj,['test'])
+        console.log(res);
+
+    </script>
+</body>
+</html>
