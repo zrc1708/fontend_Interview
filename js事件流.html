@@ -36,19 +36,26 @@
         let div1 = document.querySelector('.div1')
         let div2 = document.querySelector('.div2')
         let div3 = document.querySelector('.div3')
+        
+        // DOM0:内联模型（行内绑定），将函数名直接作为html标签中属性的属性值
+        // DOM0级只支持冒泡阶段
+
+        // DOM2:addEventListener()...
+        // 函数均有3个参数， 第一个参数是要处理的事件名 第二个参数是作为事件处理程序的函数 
+        // 第三个参数是一个boolean值，默认false表示使用冒泡机制，true表示捕获机制
 
         div2.onclick = function(){
-            console.log('div2 onclick')
+            console.log('div2 DOM0 onclick')
         }
         div3.onclick = function(){
-            console.log('div3 onclick')
+            console.log('div3 DOM0 onclick')
         }
 
         div1.addEventListener('click',function(){
             console.log('div1 冒泡')
         },false)
         div1.onclick = function(){
-            console.log('div1 onclick')
+            console.log('div1 DOM0 onclick')
         }
         div1.addEventListener('click',function(){
             console.log('div1 捕获')

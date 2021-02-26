@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        width: 100%;
+    }
+    .content{
+        height: 3000px;
+        width: 60%;
+        margin: 0 auto;
+        background-color: pink;
+    }
+    .last-content{
+        height: 200px;
+        width: 60%;
+        margin: 0 auto;
+        background-color: green;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="content"></div>
+        <div class="last-content"></div>
+    </div>
+
+    <script>
+        var io = new IntersectionObserver(entries => {
+                    console.log(entries);
+                });
+        // 开始观察
+        io.observe(document.querySelector('.last-content'));
+
+
+        // 停止观察
+        // io.unobserve(element);
+        // 关闭观察器
+        // io.disconnect();
+    </script>
+</body>
+</html>
