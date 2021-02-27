@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .test{
+        display: none;
+    }
+    .show{
+        display: block;
+    }
+</style>
+<body>
+    <div>
+        <a href="#/test1">test1</a>
+        <a href="#/test2">test2</a>
+        <a href="#/test3">test3</a>
+    </div>
+    <div class="test">
+        <div class="test1">one</div>
+        <div class="test2">two</div>
+        <div class="test3">three</div>
+    </div>
+
+    <script>
+        window.onhashchange = ()=>{
+            const hash = location.hash.replace('#','')
+            document.querySelector('.test').classList.remove('show')
+            console.log(hash)
+            if(hash=='/test1'){
+                document.querySelector('.test1').classList.add('show')
+            }else if(hash=='/test2'){
+                document.querySelector('.test2').classList.add('show')
+            }else if(hash=='/test3'){
+                document.querySelector('.test3').classList.add('show')
+            }
+        }
+    </script>
+</body>
+</html>
