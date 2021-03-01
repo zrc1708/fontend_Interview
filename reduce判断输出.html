@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .test {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    background-color: pink;
+  }
+</style>
+
+<body>
+  <script>
+    // 下面代码分别输出多少， 为什么等于这么多讲讲解题思路 
+    // const res = [1, 2, 3, 4].reduce((total, p, i) => total + i);
+    // console.log(res); // 输出多少 
+    // const res1 = [1, 2, 3, 4].reduce((total, p, i) => total + i, 0);
+    // console.log(res1); // 输出多少
+
+
+    const res = [1, 2, 3, 4].reduce((total, p, i) => {
+      console.log(total+'==='+i)
+      return total + i
+    });
+    console.log(res); // 输出多少 
+    const res1 = [1, 2, 3, 4].reduce((total, p, i) => {
+      console.log(total+'==='+i)
+      return total + i
+    }, 0);
+    console.log(res1); // 输出多少
+  </script>
+</body>
+
+</html>
