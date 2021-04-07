@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = [1, [2, 3, [4, [5]]]];
+
+        // es6 flat法
+        let b = a.flat(Infinity)
+        console.log(b)
+
+        // reduce法
+        function flatten(arr) {
+            return arr.reduce((res, next) => {
+                return res.concat(Array.isArray(next) ? flatten(next) : next);
+            }, []);
+        }
+        let c = flatten(a)
+        console.log(c)
+
+        // 纯数字
+        let d = a.toString().split(',').map(item=>Number(item))
+        console.log(d)
+
+    </script>
+</body>
+
+</html>

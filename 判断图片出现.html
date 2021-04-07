@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .test{
+        width: 100%;
+        height: 3000px;
+    }
+    .image{
+        width: 300px;
+        height: 200px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div class="test"></div>
+    <div class="image"></div>
+    <script>
+        // boundingClientRect 目标元素的矩形信息
+        // intersectionRatio 相交区域和目标元素的比例值 intersectionRect/boundingClientRect 不可见时小于等于0
+        // intersectionRect 目标元素和视窗（根）相交的矩形信息 可以称为相交区域
+        // isIntersecting 目标元素当前是否可见 Boolean值 可见为true
+        // rootBounds 根元素的矩形信息，没有指定根元素就是当前视窗的矩形信息
+        // target 观察的目标元素
+        // time 返回一个记录从IntersectionObserver的时间到交叉被触发的时间的时间戳
+        const obsver = new IntersectionObserver(e=>{
+            // console.log(e)
+            if(e[0].isIntersecting){
+                console.log('出现了')
+            }
+        })
+        obsver.observe(document.querySelector('.image'))
+    </script>
+</body>
+</html>

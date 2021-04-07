@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 2, 3, 4, 5, 5, 5]
+        let arr2 = [{
+                name: 123
+            }, {
+                name: 123
+            }, 1, 2, [2, 3],
+            [2, 3]
+        ]
+
+        let test = Array.from(new Set(arr))
+        let test2 = Array.from(new Set(arr2))
+
+        function unique(arr) {
+            var arr1 = [];
+            for (var i = 0, len = arr.length; i < len; i++) {
+                if (arr1.indexOf(arr[i]) === -1) {
+                    arr1.push(arr[i]);
+                }
+            }
+            return arr1;
+        }
+
+        let test3 = unique(arr2)
+
+        console.log(test)
+        console.log(test2)
+        console.log(test3)
+    </script>
+</body>
+
+</html>
