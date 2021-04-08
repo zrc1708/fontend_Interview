@@ -33,8 +33,27 @@
         }
         const f2 = curry(f)
         // console.log(f2(1)(2)(3))
-        console.log(f2(1,2)(3))
+        // console.log(f2(1,2)(3))
         // console.log(f2(1,2,3))
+
+        function add(...arr){
+            let nums = []
+            const fn = function (...arr2){
+                nums = [...nums,...arr2]
+                return fn
+            }
+            fn.value = function(){
+                return nums.reduce((start,item)=>start+item)
+            }
+            return fn(...arr)
+        }
+        console.log(add(1)(2)(3).value())
+        const test = add()
+        test(1)
+        test(2,3)
+        test(3,4)
+        console.log(test.value())
+
     </script>
 </body>
 
