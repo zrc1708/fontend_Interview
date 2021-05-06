@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        width: 100%;
+        height: 100px;
+    }
+    .a,.c{
+        background-color: lightblue;
+    }
+    .b{
+        background-color: pink;
+    }
+    /* 1.flex布局 */
+    .test1{
+        display: flex;
+    }
+    .test1 .a, .test1 .c{
+        width: 200px;
+    }
+    .test1 .b{
+        flex: 1;
+    }
+    /* 2.grid布局 */
+    .test2{
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+    }
+    /* 3.浮动 */
+    .test3 .a{
+        float: left;
+        width: 200px;
+    }
+    .test3 .c{
+        float: left;
+        width: 200px;
+    }
+    .test3 .b{
+        float: left;
+        width: calc(100% - 400px);
+    }
+</style>
+<body>
+    <div class="container test1">
+        <div class="a">固定宽度</div>
+        <div class="b">自适应布局</div>
+        <div class="c">固定宽度</div>
+    </div>
+    <hr>
+    <div class="container test2">
+        <div class="a">固定宽度</div>
+        <div class="b">自适应布局</div>
+        <div class="c">固定宽度</div>
+    </div>
+    <hr>
+    <div class="container test3">
+        <div class="a">固定宽度</div>
+        <div class="b">自适应布局</div>
+        <div class="c">固定宽度</div>
+    </div>
+    <hr>
+    <div class="container test3">
+        <div class="a">固定宽度</div>
+        <div class="b">自适应布局</div>
+        <div class="c">固定宽度</div>
+    </div>
+</body>
+</html>

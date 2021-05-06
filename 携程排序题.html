@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对某商品列表进行默认排序，排序规则
+        // 1.库存为0的置底，优先级最高
+        // 2.isTop为true置顶，多个为true时按4，5规则排序
+        // 3.isRecommend为true置顶，优先级低于isTop的产品,多个为true时按4，5规则排序
+        // 4.按价格升序
+        // 5.价格相同时按上架时间降序
+
+        const list = [
+            {
+                name: "商品1",
+                "price": 20,
+                "isTop": true,
+                "isRecommend": true,
+                "createTime": "2020/09/10 00:00:00",
+                "inventory": 9
+            },
+            {
+                "name": "商品3",
+                "price": 30,
+                "isTop": false,
+                "isRecommend": true,
+                "createTime": "2020/09/08 00:00:00",
+                "inventory": 2
+            },
+            {
+                "name": "商品2",
+                "price": 40,
+                "isTop": true,
+                "isRecommend": false,
+                "createTime": "2020/09/09 00:00:00",
+                "inventory": 0
+            },
+            {
+                "name": "商品4",
+                "price": 50,
+                "isTop": false,
+                "isRecommend": true,
+                "createTime": "2020/09/10 00:00:00",
+                "inventory": 12
+            }
+        ]
+    </script>
+</body>
+</html>
