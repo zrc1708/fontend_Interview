@@ -47,8 +47,63 @@
                 "isRecommend": true,
                 "createTime": "2020/09/10 00:00:00",
                 "inventory": 12
-            }
+            },
+            {
+                "name": "商品5",
+                "price": 50,
+                "isTop": false,
+                "isRecommend": false,
+                "createTime": "2020/09/10 00:00:00",
+                "inventory": 12
+            },
+            {
+                "name": "商品6",
+                "price": 30,
+                "isTop": false,
+                "isRecommend": true,
+                "createTime": "2020/09/11 00:00:00",
+                "inventory": 2
+            },
         ]
+
+        function sortGoods(list){
+            let topArr = []
+            let recommendArr = []
+            let noArr = []
+            let otherArr = []
+            for (let i = 0; i < list.length; i++) {
+                if(list[i].inventory==0){
+                    noArr.push(list[i])
+                }else if(list[i].isTop){
+                    topArr.push(list[i])
+                }else if(list[i].isRecommend){
+                    recommendArr.push(list[i])
+                }else{
+                    otherArr.push(list[i])
+                }
+            }
+
+            function sortAgain(arr){
+                arr.sort((a,b)=>{
+                    if(a.price>b.price){
+                        return 1
+                    }else if(a.price<b.price){
+                        return -1
+                    }else{
+                        let atime = new Date(a.createTime).getTime()
+                        let btime = new Date(b.createTime).getTime()
+                        return btime-atime
+                    }
+                })
+
+            }
+            sortAgain(topArr)
+            sortAgain(recommendArr)
+            sortAgain(otherArr)
+            return [...topArr,...recommendArr,...otherArr,...noArr]
+        }
+        let arr = sortGoods(list)
+        console.log(arr)
     </script>
 </body>
 </html>
