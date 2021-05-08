@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</head>
+<body>
+    <p>模拟csrf攻击-用户登录的网站</p>
+
+    <script>
+        // 模拟用户登录后存储的用户信息
+        Cookies.set('userId','123',{expires:1})
+
+        // 正常操作
+        // axios.get('/buy?money=1000').then(data=>{
+        //     console.log(data)
+        // })
+    </script>
+</body>
+</html>

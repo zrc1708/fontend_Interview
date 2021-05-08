@@ -23,14 +23,29 @@
         let newFun = obj.fun.bind(test,1)
         newFun()
 
+        // 手写call
+        Function.prototype.mycall = function(context,...arr){
+            context.fn = this
+            return context.fn(...arr)
+        }
+        obj.fun.mycall(test,123)
+
+        // 手写apply
+        Function.prototype.myapply = function(context,arr){
+            context.fn = this
+            return context.fn(arr)
+        }
+        obj.fun.myapply(test,[123])
+
         // 手写bind
-        Function.prototype.mybind = function(context,...args){
-            let fn = this
+        Function.prototype.mybind = function(context,...arr){
+            let fun = this
             return function(){
-                return fn.apply(context,args)
+                return fun.apply(context,arr)
             }
         }
-
+        let testfun = obj.fun.mybind(test,123)
+        testfun()
     </script>
 </body>
 </html>
